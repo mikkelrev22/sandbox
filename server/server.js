@@ -1,8 +1,9 @@
 const express = require('express')
 const app = express()
+require('dotenv').config()
 const PORT = process.env.PORT
 
-app.use(express.static(__dirname + '/dist'))
+app.use(express.static(__dirname + '/../client/dist'))
 
 app.use((req, res, next)=>{
     res.sendStatus(400)
