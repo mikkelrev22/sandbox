@@ -1,9 +1,8 @@
 const express = require('express')
 const app = express()
 const PORT = process.env.PORT
-const path = require('path')
 
-app.use(express.static(path.join(__dirname, '/../dist')))
+app.use(express.static('/dist'))
 
 app.use((req, res, next)=>{
     res.sendStatus(400)
