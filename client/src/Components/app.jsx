@@ -23,8 +23,8 @@ const App = () => {
 //useEffect on every occurrence of what? API call/response? How to seperate multiple incoming orders/calls?
 
 //Dummy API call/response
-    const getData = () => {
-        
+    const fetchData = () => {
+        // fetch('../')
     }
 
     return (

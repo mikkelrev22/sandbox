@@ -2,7 +2,7 @@ const express = require('express')
 const app = express()
 require('dotenv').config()
 const PORT = process.env.PORT
-
+const data = require('./data')
 app.use(express.static(__dirname + '/../client/dist'))
 
 app.use((req, res, next)=>{
