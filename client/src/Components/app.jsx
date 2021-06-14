@@ -21,10 +21,17 @@ const App = () => {
     const [orderInfo, setOrderInfo] = useState([])
 
 //useEffect on every occurrence of what? API call/response? How to seperate multiple incoming orders/calls?
-
+    
+    // setInterval(()=>{fetchData(), 10000})
 //Dummy API call/response
     const fetchData = () => {
-        // fetch('../')
+        fetch('localhost:3005')
+        .then(response => {
+            console.log(response)
+        })
+        .catch(error => {
+            console.error(error)
+        })
     }
 
     return (

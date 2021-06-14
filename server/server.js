@@ -5,6 +5,10 @@ const PORT = process.env.PORT
 const data = require('./data')
 app.use(express.static(__dirname + '/../client/dist'))
 
+app.get('/', (req, res)=> {
+  res.send(data)
+})
+
 app.use((req, res, next)=>{
     res.sendStatus(400)
   })
