@@ -3,9 +3,13 @@ const app = express()
 require('dotenv').config()
 const PORT = process.env.PORT
 const data = require('./data')
+const cors = require('cors')
+
+app.use(cors())
+
 app.use(express.static(__dirname + '/../client/dist'))
 
-app.get('/', (req, res)=> {
+app.get('/speechToText', (req, res)=> {
   res.send(data)
 })
 

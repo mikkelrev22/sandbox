@@ -1,33 +1,50 @@
 import React,  {useState, useEffect} from 'react'
-
+import axios from 'axios'
 //XML UI of client
-const ClientComponent = ({clientInfo}) => {
+const ClientComponent = (clientInfo) => {
+    let {clientName, clientNumber} = clientInfo 
     return <div>
-        this is the client:
-        {clientInfo}
+        <div>
+        <h2>Client Name:</h2>
+        <h3>{clientName}</h3>
+        </div>
+        <div>
+        <h2>Client Order:</h2>
+        <h3>{clientNumber}</h3>
+        </div>
     </div>
 }
 
 //XML UI of order
-const OrderComponent = ({orderInfo}) => {
+const OrderComponent = ({orderName, orderQuantity, orderType}) => {
     return <div>
-        this is the order:
-        {orderInfo}
+        Order Info:
+        {orderQuantity} {orderName} {orderType}
     </div>
 }
 
 const App = () => {
-    const [clientInfo, setClientInfo] = useState([])
-    const [orderInfo, setOrderInfo] = useState([])
-
+    const [clientName, setClientName] = useState([])
+    const [clientNumber, setClientNumber] = useState([])
+    const [orderName, setOrderName] = useState([])
+    const [orderQuantity, setOrderQuantity] = useState([])
+    const [orderType, setOrderType] = useState([])
 //useEffect on every occurrence of what? API call/response? How to seperate multiple incoming orders/calls?
     
-    // setInterval(()=>{fetchData(), 10000})
+    useEffect (() => {
+        fetchData()
+    }, [])
 //Dummy API call/response
     const fetchData = () => {
-        fetch('localhost:3005')
+        axios.get('http://localhost:3005/speechToText')
         .then(response => {
-            console.log(response)
+            // console.log(response.data)
+            let {clientName, clientNumber, orderName, orderQuantity, orderType} = response.data
+            setClientName(clientName[0])
+            setClientNumber(clientNumber[0])
+            setOrderName(orderName[0])
+            setOrderQuantity(orderQuantity[0])
+            setOrderType(orderType[0])
         })
         .catch(error => {
             console.error(error)
@@ -37,10 +54,10 @@ const App = () => {
     return (
         <div className="app">
             <div>
-            <ClientComponent clientInfo={clientInfo}/>
+            <ClientComponent clientName={clientName} clientNumber={clientNumber}/>
             </div>
             <div>
-            <OrderComponent orderInfo={orderInfo}/>
+            <OrderComponent orderName={orderName} orderType={orderType} orderQuantity={orderQuantity}/>
             </div>
         </div>
     )
