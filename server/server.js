@@ -9,7 +9,7 @@ app.use(cors())
 
 app.use(express.static(__dirname + '/../client/dist'))
 
-app.get('/speechToText', (req, res)=> {
+app.get('/text', (req, res)=> {
   res.send(data)
 })
 

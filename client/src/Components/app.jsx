@@ -36,7 +36,7 @@ const App = () => {
     }, [])
 //Dummy API call/response
     const fetchData = () => {
-        axios.get('http://localhost:3005/speechToText')
+        axios.get('http://localhost:3005/text')
         .then(response => {
             // console.log(response.data)
             let {clientName, clientNumber, orderName, orderQuantity, orderType} = response.data[0]
