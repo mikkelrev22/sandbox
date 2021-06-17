@@ -39,7 +39,7 @@ const App = () => {
         axios.get('http://localhost:3005/speechToText')
         .then(response => {
             // console.log(response.data)
-            let {clientName, clientNumber, orderName, orderQuantity, orderType} = response.data
+            let {clientName, clientNumber, orderName, orderQuantity, orderType} = response.data[0]
             setClientName(clientName[0])
             setClientNumber(clientNumber[0])
             setOrderName(orderName[0])
